@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Posts</title>
+</head>
+
+<body>
+    <h1>Blog Posts</h1>
+
+    <form action="/posts" method="POST">
+        <input type="text" name="title" placeholder="Enter title" required>
+        <textarea name="body" placeholder="Enter body" required></textarea>
+        <button type="submit">Add Post</button>
+    </form>
+
+
+    <ul>
+        <% if (posts.length > 0) { %>
+            <% posts.forEach(post => { %>
+                <li>
+                    <a href="/posts/<%= post.id %>"><%= post.title %></a>
+                    <p><%= post.body.substring(0, 100) %>...</p> <!-- Show first 100 characters -->
+                </li>
+            <% }) %>
+        <% } else { %>
+            <li>No posts available.</li>
+        <% } %>
+    </ul>
+
+</body>
+</html>
